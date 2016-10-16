@@ -3,11 +3,14 @@ package com.jonasmalik94.workhours.Controller;
 import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.jonasmalik94.workhours.Model.CalculatorOperators;
 import com.jonasmalik94.workhours.View.Elements;
 import com.jonasmalik94.workhours.R;
+
+import java.util.HashSet;
 
 
 /**
@@ -49,21 +52,30 @@ public class CalculatorOnClickListener extends CalculatorOperators implements Vi
         Button bEqual = e.getbEqual();
 
 
-        Button[] numberButtons = {b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bDot};
-        /*while (j<numberButtons.length){
-            if (view.getId() == numberButtons[j].getId()){
-                display.append(numberButtons[j].getText());
-                j = 0;
-                i = 0;
-                break;
-            }
-            j++;
-        }*/
+        HashSet numberButtons = new HashSet();
+        numberButtons.add(b0);
+        numberButtons.add(b1);
+        numberButtons.add(b2);
+        numberButtons.add(b3);
+        numberButtons.add(b4);
+        numberButtons.add(b5);
+        numberButtons.add(b6);
+        numberButtons.add(b7);
+        numberButtons.add(b8);
+        numberButtons.add(b9);
+        numberButtons.add(bDot);
 
-        if (numberButtons.Cview.getId()){
-            display.append("1");
-
-        }
+        if (view.getId() == b0.getId()) display.append("0");
+        else if (view.getId() == b1.getId()) display.append("1");
+        else if (view.getId() == b2.getId()) display.append("2");
+        else if (view.getId() == b3.getId()) display.append("3");
+        else if (view.getId() == b4.getId()) display.append("4");
+        else if (view.getId() == b5.getId()) display.append("5");
+        else if (view.getId() == b6.getId()) display.append("6");
+        else if (view.getId() == b7.getId()) display.append("7");
+        else if (view.getId() == b8.getId()) display.append("8");
+        else if (view.getId() == b9.getId()) display.append("9");
+        else if (view.getId() == bDot.getId()) display.append(".");
 
         else if (view.getId() == bPlus.getId()){
             operator = "+";
