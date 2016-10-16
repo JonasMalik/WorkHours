@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Work Hours</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- New Day fragment -->
+    <string name="start_work">Ange tid för start av arbete</string>
+    <string name="end_work">Ange tid för avslutat arbete</string>
+    <string name="start_lunch">Ange tid för start av lunch</string>
+    <string name="end_lunch">Ange tid för avslutad lunch</string>
+    <string name="summary">Sammanfattning</string>
+    <string name="next">Nästa</string>
+    <string name="save">Spara</string>
+
+    <!-- New Day fragment -->
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+
+    <string name="delete">Del</string>
+    <string name="division">/</string>
+    <string name="multiplication">x</string>
+    <string name="subtraction">-</string>
+    <string name="addition">+</string>
+    <string name="dot">.</string>
+    <string name="equal">=</string>
+
+</resources>
