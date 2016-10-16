@@ -98,8 +98,10 @@ public class CalculatorOnClickListener extends CalculatorOperators implements Vi
             firstValue = display.getText().toString();
             display.setText("* ");
         }
-        else if (view.getId() == bDel.getId()){
-
+        else if (view.getId() == bDel.getId()) {
+            if (display.getText().length() > 0) {
+                display.setText(display.getText().toString().substring(0, display.getText().length() - 1));
+            }
         }
         else if (view.getId() == bEqual.getId()){
             secondValue = display.getText().toString().substring(2);
