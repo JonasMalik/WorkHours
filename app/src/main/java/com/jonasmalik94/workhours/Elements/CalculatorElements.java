@@ -1,23 +1,20 @@
-package com.jonasmalik94.workhours.View;
+package com.jonasmalik94.workhours.Elements;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.jonasmalik94.workhours.R;
 
 
 /**
  * Created by jonas on 2016-10-15.
  */
 
-public class Elements {
+public class CalculatorElements {
 
-    private static Elements instance = null;
-    private Elements() {}
+    private static CalculatorElements instance = null;
+    private CalculatorElements() {}
 
-    public static synchronized Elements getInstance() {
-        if (instance == null) instance = new Elements();
+    public static synchronized CalculatorElements getInstance() {
+        if (instance == null) instance = new CalculatorElements();
         return instance;
     }
 

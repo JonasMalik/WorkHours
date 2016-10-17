@@ -17,13 +17,13 @@ import java.util.ArrayList;
  * Created by jonas on 2016-10-11.
  */
 
-public class CalenderAdapter extends BaseAdapter {
+public class CalendarAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<String> items;
     LayoutInflater inflater;
 
-    public CalenderAdapter(Context context, ArrayList<String> items) {
+    public CalendarAdapter(Context context, ArrayList<String> items) {
         this.context = context;
         this.items = items;
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -33,6 +33,10 @@ public class CalenderAdapter extends BaseAdapter {
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.cell, null);
+        }
+        if (position == 0){
+            Button button = (Button) convertView.findViewById(R.id.grid_item);
+
         }
         Button button = (Button) convertView.findViewById(R.id.grid_item);
         button.setText(items.get(position));

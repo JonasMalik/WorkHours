@@ -1,10 +1,8 @@
 package com.jonasmalik94.workhours.View;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,7 @@ import android.widget.TextView;
 
 import com.jonasmalik94.workhours.Controller.CalculatorOnClickListener;
 import com.jonasmalik94.workhours.R;
+import com.jonasmalik94.workhours.Elements.CalculatorElements;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -45,7 +44,7 @@ public class CalculatorFragment extends Fragment {
 
         WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         CalculatorOnClickListener  clicklistener = new CalculatorOnClickListener();
-        Elements e = Elements.getInstance();
+        CalculatorElements e = CalculatorElements.getInstance();
         int i = 0;
 
         View rootView = inflater.inflate(R.layout.fragment_calculator, container, false);

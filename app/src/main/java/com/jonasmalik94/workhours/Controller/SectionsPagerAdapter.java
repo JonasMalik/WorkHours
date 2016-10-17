@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jonasmalik94.workhours.View.CalculatorFragment;
-import com.jonasmalik94.workhours.View.CalenderFragment;
+import com.jonasmalik94.workhours.View.CalendarFragment;
 import com.jonasmalik94.workhours.View.NewDayFragment;
 
 /**
@@ -24,15 +24,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a NewDayFragment (defined as a static inner class below).
         switch(position) {
 
-            case 0: return NewDayFragment.newInstance(0);
-            case 1: return CalculatorFragment.newInstance(1);
-            case 2: return CalenderFragment.newInstance(2);
-            //case 3: return ThirdFragment.newInstance("ThirdFragment, Instance 2");
-            //case 4: return ThirdFragment.newInstance("ThirdFragment, Instance 3");
+            case 1: return NewDayFragment.newInstance(0);
+            case 0: return CalendarFragment.newInstance(1);
+            case 2: return CalculatorFragment.newInstance(2);
             default: return NewDayFragment.newInstance(0);
         }
     }

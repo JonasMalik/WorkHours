@@ -1,14 +1,11 @@
 package com.jonasmalik94.workhours.Controller;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.jonasmalik94.workhours.Model.CalculatorOperators;
-import com.jonasmalik94.workhours.View.Elements;
-import com.jonasmalik94.workhours.R;
+import com.jonasmalik94.workhours.Elements.CalculatorElements;
 
 import java.util.HashSet;
 
@@ -28,7 +25,7 @@ public class CalculatorOnClickListener extends CalculatorOperators implements Vi
     @Override
     public void onClick(View view) {
 
-        Elements e = Elements.getInstance();
+        CalculatorElements e = CalculatorElements.getInstance();
 
         TextView display = e.getDisplay();
 
