@@ -22,6 +22,7 @@ import java.util.HashSet;
 public class CalendarOnClickListener extends CalculatorOperators implements View.OnClickListener {
 
     int click = 0;
+    int tempCounter = 0;
     @Override
     public void onClick(View view) {
 
@@ -34,11 +35,25 @@ public class CalendarOnClickListener extends CalculatorOperators implements View
         Button right = e.getRight();
 
         if (view.getId() == left.getId()){
+            int counter = 0;
+            click--;
+
+            tempCounter = click + engine.getMonthNumber();
+            if (tempCounter == 0){
+                tempCounter = tempCounter+12;
+                click = click+12;
+            }
+            while (counter<engine.getCountOfDays(2016,tempCounter)){
+                items.add(Integer.toString(counter+1));
+                counter++;
+            }
+
+            month.setText(engine.getMonthName(tempCounter));
+            calendar.setAdapter(new CalendarAdapter(view.getContext(),items));
 
         }
         else if (view.getId() == right.getId()){
             int counter = 0;
-            int tempCounter = 0;
             click++;
 
             tempCounter = click + engine.getMonthNumber();

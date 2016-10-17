@@ -12,27 +12,25 @@
         <Button
             android:layout_centerVertical="true"
             android:elevation="1dp"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:id="@+id/right"
-            android:background="@drawable/calendar_next_arrow"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="5dp" />
+            android:drawableStart="@drawable/calendar_next_arrow"
+            android:background="@color/caldroid_transparent"
+            android:paddingStart="30dp" />
 
         <Button
             android:elevation="1dp"
-            android:layout_width="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:id="@+id/left"
-            android:background="@drawable/calendar_prev_arrow"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp" />
+            android:background="@color/caldroid_transparent"
+            android:drawableEnd="@drawable/calendar_prev_arrow"
+            android:paddingEnd="30dp" />
 
         <TextView
             android:id="@+id/month"

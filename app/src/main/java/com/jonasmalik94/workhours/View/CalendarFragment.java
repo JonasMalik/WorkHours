@@ -52,6 +52,7 @@ public class CalendarFragment extends Fragment {
 
         CalendarEngine engine = new CalendarEngine();
         CalendarElements e = CalendarElements.getInstance();
+        CalendarOnClickListener clickListener = new CalendarOnClickListener();
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
 
         ArrayList<String> items = new ArrayList();
@@ -68,8 +69,8 @@ public class CalendarFragment extends Fragment {
         Button right = (Button) rootView.findViewById(R.id.right);
 
         calendar.setAdapter(new CalendarAdapter(getContext(),items));
-        left.setOnClickListener(new CalendarOnClickListener());
-        right.setOnClickListener(new CalendarOnClickListener());
+        left.setOnClickListener(clickListener);
+        right.setOnClickListener(clickListener);
         month.setText(engine.getMonthName(engine.getMonthNumber()));
 
         e.setCalendar(calendar);
