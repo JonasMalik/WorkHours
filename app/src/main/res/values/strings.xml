@@ -5,10 +5,8 @@
     <!-- New Day fragment -->
     <string name="start_work">Ange tid för start av arbete</string>
     <string name="end_work">Ange tid för avslutat arbete</string>
-    <string name="start_lunch">Ange tid för start av lunch</string>
-    <string name="end_lunch">Ange tid för avslutad lunch</string>
-    <string name="summary">Sammanfattning</string>
-    <string name="next">Nästa</string>
+    <string name="lunch_work">Ange antal timmar lunchH/rast</string>
+    <string name="date_work">Ange datum</string>
     <string name="save">Spara</string>
 
     <!-- New Day fragment -->

@@ -1,62 +1,59 @@
 package com.jonasmalik94.workhours.Controller;
 
-import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
-import com.jonasmalik94.workhours.R;
+import com.jonasmalik94.workhours.Elements.NewDayElements;
+import com.jonasmalik94.workhours.Model.Dialogs;
 
 
 /**
  * Created by jonas on 2016-10-11.
  */
 
-public class NewDayOnClickListener extends Activity implements View.OnClickListener {
+@RequiresApi(api = Build.VERSION_CODES.N)
+public class NewDayOnClickListener extends Dialogs implements View.OnClickListener {
 
     int i = 0;
     int j = 0;
     View rootView;
+    Context context;
+    NewDayElements e = NewDayElements.getInstance();
 
-    public NewDayOnClickListener(View rootView) {
+
+    public NewDayOnClickListener(View rootView, Context context) {
         this.rootView = rootView;
+        this.context = context;
     }
 
     @Override
     public void onClick(View view) {
 
-        TextView textView = (TextView) rootView.findViewById(R.id.time_header);
-        TimePicker time = (TimePicker) rootView.findViewById(R.id.time);
-        Button submitButton = (Button) rootView.findViewById(R.id.submit_button);
+        TextView start = e.getStart();
+        TextView end = e.getEnd();
+        Spinner lunch = e.getLunchH();
+        TextView date = e.getDate();
+        Button submitButton = e.getSubmitButton();
 
-        if (view.getId() == submitButton.getId()) {
-            switch (view.getId()) {
-
-                case R.id.submit_button:
-                    if (i == 0) {
-                        textView.setText(R.string.end_work);
-                        submitButton.setText(R.string.next);
-                        i++;
-                    } else if (i == 1) {
-                        textView.setText(R.string.start_lunch);
-                        submitButton.setText(R.string.next);
-                        i++;
-                    } else if (i == 2) {
-                        textView.setText(R.string.end_lunch);
-                        submitButton.setText(R.string.next);
-                        i++;
-                    } else if (i == 3) {
-                        textView.setText(R.string.summary);
-                        submitButton.setText(R.string.save);
-                        i++;
-                    }
-                    break;
-
-                default:
-                    break;
-            }
+        if (view.getId() == date.getId()) {
+            openDatePickerDialog(context);
+        }
+        else if (view.getId() == start.getId()) {
+            openTimePickerDialog(context, start.getId());
+        }
+        else if (view.getId() == end.getId()) {
+            openTimePickerDialog(context, end.getId());
+        }
+        else if (view.getId() == lunch.getId()) {
+            openDatePickerDialog(context);
+        }
+        else if (view.getId() == submitButton.getId()){
+            
         }
     }
 }

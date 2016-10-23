@@ -8,4 +8,6 @@
     <color name="pink">#ff0088</color>
     <color name="transparant">#00eeeeee</color>
     <color name="darkGreen">#468768</color>
+    <color name="dark_red">#7f0000</color>
+    <color name="light_gray">#363838</color>
 </resources>
