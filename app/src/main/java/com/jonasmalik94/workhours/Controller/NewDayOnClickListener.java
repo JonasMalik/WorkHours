@@ -53,7 +53,7 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             openDatePickerDialog(context);
         }
         else if (view.getId() == submitButton.getId()){
-            
+
         }
     }
 }

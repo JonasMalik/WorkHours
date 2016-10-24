@@ -40,6 +40,9 @@ public class CalendarAdapter extends BaseAdapter {
         }
         Button button = (Button) convertView.findViewById(R.id.grid_item);
         button.setText(items.get(position));
+        if (position == 5){
+            button.setBackgroundColor(button.getResources().getColor(R.color.dark_red));
+        }
 
         return convertView;
     }

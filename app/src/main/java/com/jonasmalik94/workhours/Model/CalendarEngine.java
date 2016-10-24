@@ -40,4 +40,11 @@ public class CalendarEngine {
         return month_name;
     }
 
+    public int getYear() {
+        Calendar cal=Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+
+        return year;
+    }
+
 }

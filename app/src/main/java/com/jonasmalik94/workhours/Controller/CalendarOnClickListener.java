@@ -21,13 +21,15 @@ import java.util.HashSet;
 
 public class CalendarOnClickListener extends CalculatorOperators implements View.OnClickListener {
 
+    CalendarEngine engine = new CalendarEngine();
+    CalendarElements e = CalendarElements.getInstance();
     int click = 0;
     int tempCounter = 0;
+    int year = engine.getYear();
     @Override
     public void onClick(View view) {
 
-        CalendarEngine engine = new CalendarEngine();
-        CalendarElements e = CalendarElements.getInstance();
+
         ArrayList<String> items = new ArrayList();
         TextView month = e.getMonth();
         GridView calendar = e.getCalendar();
@@ -42,13 +44,14 @@ public class CalendarOnClickListener extends CalculatorOperators implements View
             if (tempCounter == 0){
                 tempCounter = tempCounter+12;
                 click = click+12;
+                year--;
             }
-            while (counter<engine.getCountOfDays(2016,tempCounter)){
+            while (counter<engine.getCountOfDays(year,tempCounter)){
                 items.add(Integer.toString(counter+1));
                 counter++;
             }
 
-            month.setText(engine.getMonthName(tempCounter));
+            month.setText(engine.getMonthName(tempCounter)+" "+year);
             calendar.setAdapter(new CalendarAdapter(view.getContext(),items));
 
         }
@@ -60,13 +63,14 @@ public class CalendarOnClickListener extends CalculatorOperators implements View
             if (tempCounter == 13){
                 tempCounter = tempCounter-12;
                 click = click-12;
+                year++;
             }
-            while (counter<engine.getCountOfDays(2016,tempCounter)){
+            while (counter<engine.getCountOfDays(year,tempCounter)){
                 items.add(Integer.toString(counter+1));
                 counter++;
             }
 
-            month.setText(engine.getMonthName(tempCounter));
+            month.setText(engine.getMonthName(tempCounter)+" "+year);
             calendar.setAdapter(new CalendarAdapter(view.getContext(),items));
         }
     }

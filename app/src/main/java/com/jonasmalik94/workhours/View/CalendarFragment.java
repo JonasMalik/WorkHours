@@ -58,7 +58,7 @@ public class CalendarFragment extends Fragment {
         ArrayList<String> items = new ArrayList();
         int counter = 0;
 
-        while (counter<engine.getCountOfDays(2016,2)){
+        while (counter<engine.getCountOfDays(engine.getYear(),engine.getMonthNumber())){
             items.add(Integer.toString(counter+1));
             counter++;
         }
@@ -71,7 +71,7 @@ public class CalendarFragment extends Fragment {
         calendar.setAdapter(new CalendarAdapter(getContext(),items));
         left.setOnClickListener(clickListener);
         right.setOnClickListener(clickListener);
-        month.setText(engine.getMonthName(engine.getMonthNumber()));
+        month.setText(engine.getMonthName(engine.getMonthNumber())+" "+engine.getYear());
 
         e.setCalendar(calendar);
         e.setMonth(month);
