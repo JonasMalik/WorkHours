@@ -3,6 +3,7 @@ package com.jonasmalik94.workhours.Controller;
 import android.app.TimePickerDialog;
 import android.widget.TimePicker;
 
+import com.jonasmalik94.workhours.DB.FieldHolder;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
 
 /**
@@ -11,6 +12,7 @@ import com.jonasmalik94.workhours.Elements.NewDayElements;
 
 public class TimePickerListener implements TimePickerDialog.OnTimeSetListener {
     NewDayElements e = NewDayElements.getInstance();
+    FieldHolder f = FieldHolder.getInstance();
     int id;
 
     public TimePickerListener(int id) {

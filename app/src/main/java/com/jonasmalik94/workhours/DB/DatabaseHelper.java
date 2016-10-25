@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-    private static final String DATABASE_NAME = "calender.db";
+    private static final String DATABASE_NAME = "calendar.db";
     private static final int DATABASE_Version = 1;
 
     private Dao<WorkDays,Integer> workDaysDao = null;
@@ -31,7 +31,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
         try {
-            TableUtils.clearTable(connectionSource, WorkDays.class);
+            TableUtils.createTable(connectionSource, WorkDays.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return workDaysDao;
     }
 
-    public RuntimeExceptionDao<WorkDays,Integer> getWorkDaysRuntimeDaoDao() throws SQLException {
+    public RuntimeExceptionDao<WorkDays,Integer> getWorkDaysRuntimeDao() throws SQLException {
         if (workDaysRuntimeDao == null){
             workDaysRuntimeDao = getRuntimeExceptionDao(WorkDays.class);
         }

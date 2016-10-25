@@ -3,6 +3,7 @@ package com.jonasmalik94.workhours.Controller;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
 
+import com.jonasmalik94.workhours.DB.FieldHolder;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
 
 /**
@@ -12,9 +13,13 @@ import com.jonasmalik94.workhours.Elements.NewDayElements;
 public class DatePickerListener implements DatePickerDialog.OnDateSetListener {
 
     NewDayElements e = NewDayElements.getInstance();
+    FieldHolder f = FieldHolder.getInstance();
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayInMonth) {
         e.getDate().setText(year+"-"+month+"-"+dayInMonth);
+        f.setYear(year);
+        f.setMonth(month);
+        f.setDay_of_month(dayInMonth);
     }
 }

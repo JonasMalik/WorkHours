@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
 import com.jonasmalik94.workhours.Model.Dialogs;
 
+import java.sql.SQLException;
+
 
 /**
  * Created by jonas on 2016-10-11.
@@ -41,7 +43,11 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
         Button submitButton = e.getSubmitButton();
 
         if (view.getId() == date.getId()) {
-            openDatePickerDialog(context);
+            try {
+                openDatePickerDialog(context);
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
         else if (view.getId() == start.getId()) {
             openTimePickerDialog(context, start.getId());
@@ -50,7 +56,11 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             openTimePickerDialog(context, end.getId());
         }
         else if (view.getId() == lunch.getId()) {
-            openDatePickerDialog(context);
+            try {
+                openDatePickerDialog(context);
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
         else if (view.getId() == submitButton.getId()){
 
