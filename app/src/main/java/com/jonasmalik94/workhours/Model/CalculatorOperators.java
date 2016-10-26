@@ -5,45 +5,45 @@ package com.jonasmalik94.workhours.Model;
  */
 
 public class CalculatorOperators {
-    int result;
+    double result;
     String sResult;
 
     public String operation(String firstValue, String secondValue, String operator){
-        int convertedValue1 = Integer.parseInt(firstValue);
-        int convertedValue2 = Integer.parseInt(secondValue);
+        double convertedValue1 = Double.parseDouble(firstValue);
+        double convertedValue2 = Double.parseDouble(secondValue);
 
         if (operator.equals("+")){
-            sResult = Integer.toString(addition(convertedValue1,convertedValue2));
+            sResult = Double.toString(addition(convertedValue1,convertedValue2));
         }
         if (operator.equals("-")) {
-            sResult = Integer.toString(subtraction(convertedValue1,convertedValue2));
+            sResult = Double.toString(subtraction(convertedValue1,convertedValue2));
         }
         if (operator.equals("/")) {
-            sResult = Integer.toString(division(convertedValue1,convertedValue2));
+            sResult = Double.toString(division(convertedValue1,convertedValue2));
         }
         if (operator.equals("*")) {
-            sResult = Integer.toString(multiplication(convertedValue1,convertedValue2));
+            sResult = Double.toString(multiplication(convertedValue1,convertedValue2));
         }
 
         return sResult;
     }
 
-    public int subtraction(int firstValue, int secondValue){
+    public double subtraction(double firstValue, double secondValue){
         result = firstValue-secondValue;
         return result;
     }
 
-    public int addition(int firstValue, int secondValue){
+    public double addition(double firstValue, double secondValue){
         result = firstValue+secondValue;
         return result;
     }
 
-    public int division(int firstValue, int secondValue){
+    public double division(double firstValue, double secondValue){
         result = firstValue/secondValue;
         return result;
     }
 
-    public int multiplication(int firstValue, int secondValue){
+    public double multiplication(double firstValue, double secondValue){
         result = firstValue*secondValue;
         return result;
     }
