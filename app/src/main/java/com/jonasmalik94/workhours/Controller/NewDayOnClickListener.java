@@ -72,8 +72,6 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             try {
                 DatabaseHelper helper = new DatabaseHelper(context);
                 workDaysDao = helper.getWorkDaysRuntimeDao();
-                TableUtils.dropTable(workDaysDao,false);
-                helper.createMyTable();
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }

@@ -9,6 +9,7 @@
     <color name="transparant">#00eeeeee</color>
     <color name="darkGreen">#468768</color>
     <color name="dark_red">#7f0000</color>
+    <color name="light_red">#cd8989</color>
     <color name="light_gray">#363838</color>
     <color name="darkGray">#282828</color>
     <color name="text_gray">#808080</color>

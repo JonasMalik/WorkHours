@@ -73,7 +73,8 @@ public class CalendarAdapter extends BaseAdapter {
             List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month)).query();
 
             if (workDays.size() > 0){
-                button.setBackgroundColor(button.getResources().getColor(R.color.dark_red));
+                button.setBackgroundColor(button.getResources().getColor(R.color.light_red));
+                workDays.clear();
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
