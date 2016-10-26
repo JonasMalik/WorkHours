@@ -14,7 +14,7 @@ import com.jonasmalik94.workhours.R;
 public class SpinnerListener extends Activity implements AdapterView.OnItemSelectedListener {
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        ((TextView) adapterView.getChildAt(0)).setTextColor(view.getResources().getColor(R.color.white));
+        ((TextView) adapterView.getChildAt(0)).setTextColor(view.getResources().getColor(R.color.text_gray));
 
     }
 
