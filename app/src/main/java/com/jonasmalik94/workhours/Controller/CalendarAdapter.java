@@ -9,9 +9,15 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.Where;
+import com.jonasmalik94.workhours.DB.DatabaseHelper;
+import com.jonasmalik94.workhours.DB.WorkDays;
 import com.jonasmalik94.workhours.R;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonas on 2016-10-11.
@@ -20,12 +26,14 @@ import java.util.ArrayList;
 public class CalendarAdapter extends BaseAdapter {
 
     private Context context;
+    private int month;
     private ArrayList<String> items;
     LayoutInflater inflater;
 
-    public CalendarAdapter(Context context, ArrayList<String> items) {
+    public CalendarAdapter(Context context, ArrayList<String> items, int month) {
         this.context = context;
         this.items = items;
+        this.month = month;
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -34,15 +42,9 @@ public class CalendarAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.cell, null);
         }
-        if (position == 0){
-            Button button = (Button) convertView.findViewById(R.id.grid_item);
-
-        }
         Button button = (Button) convertView.findViewById(R.id.grid_item);
         button.setText(items.get(position));
-        if (position == 5){
-            button.setBackgroundColor(button.getResources().getColor(R.color.dark_red));
-        }
+        checkIfExist(button,position, month);
 
         return convertView;
     }
@@ -60,5 +62,21 @@ public class CalendarAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public void checkIfExist(Button button, int position, int month){
+        RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
+        try {
+            DatabaseHelper helper = new DatabaseHelper(context);
+            workDaysDao = helper.getWorkDaysRuntimeDao();
+            Where where = workDaysDao.queryBuilder().where();
+            List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month)).query();
+
+            if (workDays.size() > 0){
+                button.setBackgroundColor(button.getResources().getColor(R.color.dark_red));
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
     }
 }

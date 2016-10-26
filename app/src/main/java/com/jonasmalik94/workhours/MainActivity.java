@@ -12,7 +12,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.table.TableUtils;
 import com.jonasmalik94.workhours.Controller.SectionsPagerAdapter;
+import com.jonasmalik94.workhours.DB.DatabaseHelper;
+import com.jonasmalik94.workhours.DB.WorkDays;
+
+import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +31,17 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
+        try {
+            DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
+            workDaysDao = helper.getWorkDaysRuntimeDao();
+            TableUtils.dropTable(workDaysDao,false);
+            helper.createMyTable();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
 
-        // Set up the ViewPager with the sections adapter.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
     }

@@ -62,6 +62,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return workDaysRuntimeDao;
     }
 
+    public void createMyTable() throws SQLException {
+        if (workDaysRuntimeDao == null){
+            workDaysRuntimeDao = getRuntimeExceptionDao(WorkDays.class);
+        }
+        TableUtils.createTableIfNotExists(connectionSource, WorkDays.class);
+    }
+
 
 
 }

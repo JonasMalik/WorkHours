@@ -111,13 +111,13 @@ public class FieldHolder {
     public String getStart_time() {
         return start_time;
     }
-    public void setStart_time(int start_hours) {
+    public void setStart_time(String start_hours) {
         this.start_time = start_time;
     }
     public String getEnd_time() {
         return end_time;
     }
-    public void setEnd_time(int end_hours) {
+    public void setEnd_time(String end_hours) {
         this.end_time = end_time;
     }
 

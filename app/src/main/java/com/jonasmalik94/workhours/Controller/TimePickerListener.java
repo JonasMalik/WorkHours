@@ -24,9 +24,11 @@ public class TimePickerListener implements TimePickerDialog.OnTimeSetListener {
     public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
         if (e.getStart().getId() == id){
             e.getStart().setText(hours+":"+minutes);
+            f.setStart_time(hours+":"+minutes);
         }
         else {
             e.getEnd().setText(hours+":"+minutes);
+            f.setEnd_time(hours+":"+minutes);
         }
     }
 }

@@ -52,7 +52,7 @@ public class CalendarOnClickListener extends CalculatorOperators implements View
             }
 
             month.setText(engine.getMonthName(tempCounter)+" "+year);
-            calendar.setAdapter(new CalendarAdapter(view.getContext(),items));
+            calendar.setAdapter(new CalendarAdapter(view.getContext(),items, tempCounter));
 
         }
         else if (view.getId() == right.getId()){
@@ -71,7 +71,7 @@ public class CalendarOnClickListener extends CalculatorOperators implements View
             }
 
             month.setText(engine.getMonthName(tempCounter)+" "+year);
-            calendar.setAdapter(new CalendarAdapter(view.getContext(),items));
+            calendar.setAdapter(new CalendarAdapter(view.getContext(),items, tempCounter));
         }
     }
 }

@@ -1,0 +1,35 @@
+#
+# generated on 2016/10/26 07:56:03
+#
+# --table-start--
+dataClass=com.jonasmalik94.workhours.DB.WorkDays
+tableName=workdays
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=year
+# --field-end--
+# --field-start--
+fieldName=month
+# --field-end--
+# --field-start--
+fieldName=day_of_month
+# --field-end--
+# --field-start--
+fieldName=worked_hours
+# --field-end--
+# --field-start--
+fieldName=worked_minutes
+# --field-end--
+# --field-start--
+fieldName=lunch_hours
+# --field-end--
+# --field-start--
+fieldName=lunch_minutes
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

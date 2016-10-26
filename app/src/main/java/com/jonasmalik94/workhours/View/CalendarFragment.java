@@ -68,7 +68,7 @@ public class CalendarFragment extends Fragment {
         Button left = (Button) rootView.findViewById(R.id.left);
         Button right = (Button) rootView.findViewById(R.id.right);
 
-        calendar.setAdapter(new CalendarAdapter(getContext(),items));
+        calendar.setAdapter(new CalendarAdapter(getContext(),items, engine.getMonthNumber()));
         left.setOnClickListener(clickListener);
         right.setOnClickListener(clickListener);
         month.setText(engine.getMonthName(engine.getMonthNumber())+" "+engine.getYear());

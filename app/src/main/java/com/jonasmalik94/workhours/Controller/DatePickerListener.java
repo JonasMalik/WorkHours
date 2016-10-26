@@ -17,6 +17,7 @@ public class DatePickerListener implements DatePickerDialog.OnDateSetListener {
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayInMonth) {
+        month = month+1;
         e.getDate().setText(year+"-"+month+"-"+dayInMonth);
         f.setYear(year);
         f.setMonth(month);
