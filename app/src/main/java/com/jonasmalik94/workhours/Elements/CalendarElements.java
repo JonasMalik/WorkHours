@@ -22,6 +22,7 @@ public class CalendarElements {
 
     private GridView calendar;
     private TextView month;
+    private TextView infoHeader;
     private Button left;
     private Button right;
 
@@ -49,5 +50,10 @@ public class CalendarElements {
     public void setRight(Button right) {
         this.right = right;
     }
-
+    public TextView getInfoHeader() {
+        return infoHeader;
+    }
+    public void setInfoHeader(TextView infoHeader) {
+        this.infoHeader = infoHeader;
+    }
 }

@@ -19,7 +19,7 @@ import java.util.HashSet;
  * Created by jonas on 2016-10-11.
  */
 
-public class CalendarOnClickListener extends CalculatorOperators implements View.OnClickListener {
+public class CalendarOnClickListener implements View.OnClickListener {
 
     CalendarEngine engine = new CalendarEngine();
     CalendarElements e = CalendarElements.getInstance();

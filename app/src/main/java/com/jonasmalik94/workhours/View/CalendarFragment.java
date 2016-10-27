@@ -1,5 +1,6 @@
 package com.jonasmalik94.workhours.View;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.jonasmalik94.workhours.Controller.CalendarAdapter;
 import com.jonasmalik94.workhours.Controller.CalendarOnClickListener;
+import com.jonasmalik94.workhours.Controller.CalendarOnItemClickListener;
 import com.jonasmalik94.workhours.Elements.CalendarElements;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.R;
@@ -54,7 +56,7 @@ public class CalendarFragment extends Fragment {
         CalendarElements e = CalendarElements.getInstance();
         CalendarOnClickListener clickListener = new CalendarOnClickListener();
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
-
+        CalendarOnItemClickListener itemListener = new CalendarOnItemClickListener(getContext());
         ArrayList<String> items = new ArrayList();
         int counter = 0;
 
@@ -64,19 +66,23 @@ public class CalendarFragment extends Fragment {
         }
 
         TextView month = (TextView) rootView.findViewById(R.id.month);
-        GridView calendar = (GridView) rootView.findViewById(R.id.calender);
+        final GridView calendar = (GridView) rootView.findViewById(R.id.calender);
         Button left = (Button) rootView.findViewById(R.id.left);
         Button right = (Button) rootView.findViewById(R.id.right);
+        TextView infoHeader = (TextView) rootView.findViewById(R.id.info_header);
 
         calendar.setAdapter(new CalendarAdapter(getContext(),items, engine.getMonthNumber()));
         left.setOnClickListener(clickListener);
         right.setOnClickListener(clickListener);
         month.setText(engine.getMonthName(engine.getMonthNumber())+" "+engine.getYear());
+        calendar.setOnItemClickListener(itemListener);
 
+        e.setInfoHeader(infoHeader);
         e.setCalendar(calendar);
         e.setMonth(month);
         e.setLeft(left);
         e.setRight(right);
+
 
         return rootView;
     }

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.Where;
@@ -42,9 +43,9 @@ public class CalendarAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.cell, null);
         }
-        Button button = (Button) convertView.findViewById(R.id.grid_item);
-        button.setText(items.get(position));
-        checkIfExist(button,position, month);
+        Button cell = (Button) convertView.findViewById(R.id.grid_item);
+        cell.setText(items.get(position));
+        checkIfExist(cell,position, month);
 
         return convertView;
     }
@@ -64,7 +65,7 @@ public class CalendarAdapter extends BaseAdapter {
         return position;
     }
 
-    public void checkIfExist(Button button, int position, int month){
+    public void checkIfExist(Button cell, int position, int month){
         RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
         try {
             DatabaseHelper helper = new DatabaseHelper(context);
@@ -73,7 +74,7 @@ public class CalendarAdapter extends BaseAdapter {
             List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month)).query();
 
             if (workDays.size() > 0){
-                button.setBackgroundColor(button.getResources().getColor(R.color.light_red));
+                cell.setBackgroundColor(cell.getResources().getColor(R.color.light_red));
                 workDays.clear();
             }
         } catch (SQLException e1) {

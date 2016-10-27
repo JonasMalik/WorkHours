@@ -18,7 +18,6 @@ public class CalculatorElements {
         return instance;
     }
 
-
     private Button b0;
     private Button b1;
     private Button b2;
