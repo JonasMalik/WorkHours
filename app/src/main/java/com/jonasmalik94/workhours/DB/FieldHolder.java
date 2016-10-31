@@ -60,8 +60,8 @@ public class FieldHolder {
     }
     public int getWorked_hours() throws ParseException {
         long hours;
-        String time1 = "07:30";
-        String time2 = "16:30";
+        String time1 = getStart_time();
+        String time2 = getEnd_time();
 
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         Date date1 = format.parse(time1);

@@ -28,13 +28,15 @@ public class CalendarAdapter extends BaseAdapter {
 
     private Context context;
     private int month;
+    private int year;
     private ArrayList<String> items;
     LayoutInflater inflater;
 
-    public CalendarAdapter(Context context, ArrayList<String> items, int month) {
+    public CalendarAdapter(Context context, ArrayList<String> items, int month, int year) {
         this.context = context;
         this.items = items;
         this.month = month;
+        this.year = year;
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -45,7 +47,7 @@ public class CalendarAdapter extends BaseAdapter {
         }
         Button cell = (Button) convertView.findViewById(R.id.grid_item);
         cell.setText(items.get(position));
-        checkIfExist(cell,position, month);
+        checkIfExist(cell,position, month, year);
 
         return convertView;
     }
@@ -65,13 +67,13 @@ public class CalendarAdapter extends BaseAdapter {
         return position;
     }
 
-    public void checkIfExist(Button cell, int position, int month){
+    public void checkIfExist(Button cell, int position, int month, int year){
         RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
         try {
             DatabaseHelper helper = new DatabaseHelper(context);
             workDaysDao = helper.getWorkDaysRuntimeDao();
             Where where = workDaysDao.queryBuilder().where();
-            List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month)).query();
+            List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month), where.eq("year", year)).query();
 
             if (workDays.size() > 0){
                 cell.setBackgroundColor(cell.getResources().getColor(R.color.light_red));

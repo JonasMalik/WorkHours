@@ -1,5 +1,6 @@
 package com.jonasmalik94.workhours.View;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import com.jonasmalik94.workhours.Controller.NewDayOnClickListener;
 import com.jonasmalik94.workhours.Controller.SpinnerListener;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
+import com.jonasmalik94.workhours.ExportActivity;
+import com.jonasmalik94.workhours.MainActivity;
 import com.jonasmalik94.workhours.R;
 
 import java.util.ArrayList;
@@ -70,6 +73,13 @@ public class NewDayFragment extends Fragment {
 
         lunchM.setOnItemSelectedListener(spinnerListener);
         lunchH.setOnItemSelectedListener(spinnerListener);
+        dateLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ExportActivity.class);
+                startActivity(intent);
+            }
+        });
         // Spinner Drop down elements
 
         for (int i = 0; i<25; i++) {

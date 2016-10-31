@@ -1,6 +1,7 @@
 package com.jonasmalik94.workhours.Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -30,6 +31,20 @@ public class CalendarEngine {
         return month_number;
     }
 
+    public int getMonthNumber(String monthName) {
+        int monthNumber = 0;
+        String[] month = {"Januari", "Februari", "Mars", "April",
+                "Maj", "Juni", "Juli", "Augusti", "September",
+                "Oktober", "November", "December"};
+
+        for (int i =0; i<month.length; i++){
+            if (month[i].equals(monthName)){
+                monthNumber = i+1;
+            }
+        }
+        return monthNumber;
+    }
+
     public String getMonthName(int monthNumber) {
         String month_name;
         String[] month = {"Januari", "Februari", "Mars", "April",
@@ -45,6 +60,18 @@ public class CalendarEngine {
         int year = cal.get(Calendar.YEAR);
 
         return year;
+    }
+
+    public ArrayList<String> getItems(int year, int month){
+        int counter = 0;
+        ArrayList<String> items = new ArrayList<>();
+
+        while (counter<getCountOfDays(year,month)){
+            items.add(Integer.toString(counter+1));
+            counter++;
+        }
+
+        return items;
     }
 
 }

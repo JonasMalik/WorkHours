@@ -57,26 +57,25 @@ public class CalendarFragment extends Fragment {
         CalendarOnClickListener clickListener = new CalendarOnClickListener();
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
         CalendarOnItemClickListener itemListener = new CalendarOnItemClickListener(getContext());
-        ArrayList<String> items = new ArrayList();
-        int counter = 0;
-
-        while (counter<engine.getCountOfDays(engine.getYear(),engine.getMonthNumber())){
-            items.add(Integer.toString(counter+1));
-            counter++;
-        }
 
         TextView month = (TextView) rootView.findViewById(R.id.month);
         final GridView calendar = (GridView) rootView.findViewById(R.id.calender);
         Button left = (Button) rootView.findViewById(R.id.left);
         Button right = (Button) rootView.findViewById(R.id.right);
         TextView infoHeader = (TextView) rootView.findViewById(R.id.info_header);
+        TextView infoHoursWorked = (TextView) rootView.findViewById(R.id.info_hours_worked);
 
-        calendar.setAdapter(new CalendarAdapter(getContext(),items, engine.getMonthNumber()));
+        calendar.setAdapter(new CalendarAdapter(getContext(),
+                            engine.getItems(engine.getYear(), engine.getMonthNumber()),
+                            engine.getMonthNumber(),
+                            engine.getYear()));
         left.setOnClickListener(clickListener);
         right.setOnClickListener(clickListener);
         month.setText(engine.getMonthName(engine.getMonthNumber())+" "+engine.getYear());
         calendar.setOnItemClickListener(itemListener);
+        calendar.setOnItemLongClickListener(itemListener);
 
+        e.setInfoHoursWorked(infoHoursWorked);
         e.setInfoHeader(infoHeader);
         e.setCalendar(calendar);
         e.setMonth(month);

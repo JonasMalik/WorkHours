@@ -14,7 +14,9 @@ import com.j256.ormlite.table.TableUtils;
 import com.jonasmalik94.workhours.DB.DatabaseHelper;
 import com.jonasmalik94.workhours.DB.FieldHolder;
 import com.jonasmalik94.workhours.DB.WorkDays;
+import com.jonasmalik94.workhours.Elements.CalendarElements;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
+import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.Model.Dialogs;
 
 import java.sql.SQLException;
@@ -33,6 +35,8 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
     int j = 0;
     View rootView;
     Context context;
+    CalendarElements cE= CalendarElements.getInstance();
+    CalendarEngine engine = new CalendarEngine();
     NewDayElements e = NewDayElements.getInstance();
     FieldHolder f = FieldHolder.getInstance();
 
@@ -54,21 +58,17 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
 
         if (view.getId() == date.getId()) {
             openDatePickerDialog(context);
-        }
-        else if (view.getId() == start.getId()) {
+        } else if (view.getId() == start.getId()) {
             openTimePickerDialog(context, start.getId());
-        }
-        else if (view.getId() == end.getId()) {
+        } else if (view.getId() == end.getId()) {
             openTimePickerDialog(context, end.getId());
-        }
-        else if (view.getId() == lunchH.getId()) {
+        } else if (view.getId() == lunchH.getId()) {
 
-        }
-        else if (view.getId() == submitButton.getId()){
-            f.setLunch_hours(Integer.parseInt(lunchH.getSelectedItem().toString().replaceAll("\\D+","")));
-            f.setLunch_minutes(Integer.parseInt(lunchM.getSelectedItem().toString().replaceAll("\\D+","")));
+        } else if (view.getId() == submitButton.getId()) {
+            f.setLunch_hours(Integer.parseInt(lunchH.getSelectedItem().toString().replaceAll("\\D+", "")));
+            f.setLunch_minutes(Integer.parseInt(lunchM.getSelectedItem().toString().replaceAll("\\D+", "")));
 
-            RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
+            RuntimeExceptionDao<WorkDays, Integer> workDaysDao = null;
             try {
                 DatabaseHelper helper = new DatabaseHelper(context);
                 workDaysDao = helper.getWorkDaysRuntimeDao();
@@ -79,22 +79,26 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             //Create
             try {
                 workDaysDao.create(new WorkDays(f.getYear(),
-                                                f.getMonth(),
-                                                f.getDay_of_month(),
-                                                f.getWorked_hours(),
-                                                f.getWorked_minutes(),
-                                                f.getLunch_hours(),
-                                                f.getLunch_minutes()));
+                        f.getMonth(),
+                        f.getDay_of_month(),
+                        f.getWorked_hours(),
+                        f.getWorked_minutes(),
+                        f.getLunch_hours(),
+                        f.getLunch_minutes()));
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }
 
-
             //Add to db
             List<WorkDays> workDays = workDaysDao.queryForAll();
 
-            //Output
-            Log.d("demo",workDays.toString());
+            cE.getCalendar().setAdapter(new CalendarAdapter(context,
+                                                            engine.getItems(engine.getYear(),
+                                                                            engine.getMonthNumber()),
+                                                            engine.getMonthNumber(),
+                                                            engine.getYear()));
+
+
         }
     }
 }

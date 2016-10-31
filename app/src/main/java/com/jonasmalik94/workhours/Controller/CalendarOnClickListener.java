@@ -46,13 +46,9 @@ public class CalendarOnClickListener implements View.OnClickListener {
                 click = click+12;
                 year--;
             }
-            while (counter<engine.getCountOfDays(year,tempCounter)){
-                items.add(Integer.toString(counter+1));
-                counter++;
-            }
 
             month.setText(engine.getMonthName(tempCounter)+" "+year);
-            calendar.setAdapter(new CalendarAdapter(view.getContext(),items, tempCounter));
+            calendar.setAdapter(new CalendarAdapter(view.getContext(),engine.getItems(year,tempCounter), tempCounter, year));
 
         }
         else if (view.getId() == right.getId()){
@@ -65,13 +61,9 @@ public class CalendarOnClickListener implements View.OnClickListener {
                 click = click-12;
                 year++;
             }
-            while (counter<engine.getCountOfDays(year,tempCounter)){
-                items.add(Integer.toString(counter+1));
-                counter++;
-            }
 
             month.setText(engine.getMonthName(tempCounter)+" "+year);
-            calendar.setAdapter(new CalendarAdapter(view.getContext(),items, tempCounter));
+            calendar.setAdapter(new CalendarAdapter(view.getContext(),engine.getItems(year,tempCounter), tempCounter, year));
         }
     }
 }

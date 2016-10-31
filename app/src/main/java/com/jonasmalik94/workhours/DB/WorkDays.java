@@ -9,28 +9,28 @@ import com.j256.ormlite.field.DatabaseField;
 public class WorkDays {
 
     @DatabaseField(generatedId = true)
-    int id;
+    private int id;
 
     @DatabaseField
-    int year;
+    private int year;
 
     @DatabaseField
-    int month;
+    private int month;
 
     @DatabaseField
-    int day_of_month;
+    private int day_of_month;
 
     @DatabaseField
-    int worked_hours;
+    private int worked_hours;
 
     @DatabaseField
-    int worked_minutes;
+    private int worked_minutes;
 
     @DatabaseField
-    int lunch_hours;
+    private int lunch_hours;
 
     @DatabaseField
-    int lunch_minutes;
+    private int lunch_minutes;
 
     public WorkDays(){
 
@@ -58,5 +58,30 @@ public class WorkDays {
                 ", lunch_hours=" + lunch_hours +
                 ", lunch_minutes=" + lunch_minutes +
                 '}';
+    }
+
+    public int getLunch_minutes() {
+        return lunch_minutes;
+    }
+    public int getLunch_hours() {
+        return lunch_hours;
+    }
+    public int getId() {
+        return id;
+    }
+    public int getYear() {
+        return year;
+    }
+    public int getMonth() {
+        return month;
+    }
+    public int getDay_of_month() {
+        return day_of_month;
+    }
+    public int getWorked_hours() {
+        return worked_hours;
+    }
+    public int getWorked_minutes() {
+        return worked_minutes;
     }
 }

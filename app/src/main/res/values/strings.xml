@@ -29,4 +29,18 @@
     <string name="dot">.</string>
     <string name="equal">=</string>
 
+    <!-- Delete Dialog -->
+    <string name="delete_title">Radera</string>
+    <string name="delete_message">Är du verkligen säker på att du vill radera detta arbetspass?</string>
+    <string name="delete_positive_button">Ja</string>
+    <string name="delete_negative_button">Nej</string>
+
+    <!-- Toasts -->
+    <string name="toast_delete_error">Fel vid radering!</string>
+    <string name="toast_delete_success">Arbetspass raderat</string>
+    <string name="toast_delete_nothing_to_delete">Ingen logg för detta datum</string>
+
+
+
+
 </resources>

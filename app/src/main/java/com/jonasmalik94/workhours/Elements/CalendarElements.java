@@ -23,6 +23,7 @@ public class CalendarElements {
     private GridView calendar;
     private TextView month;
     private TextView infoHeader;
+    private TextView infoHoursWorked;
     private Button left;
     private Button right;
 
@@ -55,5 +56,11 @@ public class CalendarElements {
     }
     public void setInfoHeader(TextView infoHeader) {
         this.infoHeader = infoHeader;
+    }
+    public TextView getInfoHoursWorked() {
+        return infoHoursWorked;
+    }
+    public void setInfoHoursWorked(TextView infoHoursWorked) {
+        this.infoHoursWorked = infoHoursWorked;
     }
 }
