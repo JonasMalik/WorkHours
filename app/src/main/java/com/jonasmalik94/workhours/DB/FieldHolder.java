@@ -5,6 +5,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -60,16 +61,19 @@ public class FieldHolder {
     }
     public int getWorked_hours() throws ParseException {
         long hours;
-        String time1 = getStart_time();
-        String time2 = getEnd_time();
+        String start = getStart_time();
+        String end = getEnd_time();
 
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        Date date1 = format.parse(time1);
-        Date date2 = format.parse(time2);
+        Date date1 = format.parse(start);
+        Date date2 = format.parse(end);
+
         long difference = date2.getTime() - date1.getTime();
         difference = difference / 1000; // To seconds
-        difference = difference / 60; // To minutes
-        hours = (difference/60)%60;
+        difference = (difference / 60); // To minutes
+        difference = difference - getLunch_minutes(); // To minutes
+        hours = ((difference/60)%60); // To hours
+        hours = hours-getLunch_hours(); // minus lunch hours
 
         return (int) hours;
     }
@@ -79,15 +83,18 @@ public class FieldHolder {
     public int getWorked_minutes() throws ParseException {
         long minutes;
         long hours;
-        String time1 = "07:30";
-        String time2 = "16:30";
+        String start = getStart_time();
+        String end = getEnd_time();
+        String lunch = getLunch_hours()+":"+getLunch_minutes();
 
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        Date date1 = format.parse(time1);
-        Date date2 = format.parse(time2);
-        long difference = date2.getTime() - date1.getTime();
+        Date date1 = format.parse(start);
+        Date date2 = format.parse(end);
+        Date date3 = format.parse(lunch);
+        long difference = date2.getTime() - date1.getTime() - date3.getTime();
         difference = difference / 1000; // To seconds
         difference = difference / 60; // To minutes
+        //difference = difference - getLunch_minutes(); // Minus lunch minutes
 
         hours = (difference/60)%60;
         minutes = difference-(hours*60);
@@ -111,13 +118,13 @@ public class FieldHolder {
     public String getStart_time() {
         return start_time;
     }
-    public void setStart_time(String start_hours) {
+    public void setStart_time(String start_time) {
         this.start_time = start_time;
     }
     public String getEnd_time() {
         return end_time;
     }
-    public void setEnd_time(String end_hours) {
+    public void setEnd_time(String end_time) {
         this.end_time = end_time;
     }
 

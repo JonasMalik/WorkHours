@@ -1,15 +1,13 @@
 package com.jonasmalik94.workhours.Controller;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+
 import com.j256.ormlite.dao.RuntimeExceptionDao;
-import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.jonasmalik94.workhours.DB.DatabaseHelper;
 import com.jonasmalik94.workhours.DB.WorkDays;
@@ -39,40 +37,37 @@ public class CalendarOnItemClickListener implements AdapterView.OnItemLongClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // Getting the clicked list item by position
-        // final View view1 = calendar.getAdapter().getView(position, null, calendar);
-        //TextView myID = (TextView) view1.findViewById(R.id.myID);
         date = position +1;
         month = e.getMonth().getText().toString().substring(0,e.getMonth().length()-5);
         monthNumber = engine.getMonthNumber(e.getMonth().getText().toString().substring(0,e.getMonth().length()-5));
         year = Integer.parseInt(e.getMonth().getText().toString().substring(e.getMonth().length()-4));
         e.getInfoHeader().setText(month+" "+date);
 
-
-
-
-
-
-//============================================================================================================================
         RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
         try {
             DatabaseHelper helper = new DatabaseHelper(context);
             workDaysDao = helper.getWorkDaysRuntimeDao();
             Where where = workDaysDao.queryBuilder().where();
-            List<WorkDays> workDays = where.and(where.eq("month", monthNumber), where.eq("year", year)).query();
-            int workedHours = workDays.get(0).getWorked_hours();
-            int workedMinutes = workDays.get(0).getWorked_minutes();
-            e.getInfoHoursWorked().setText(workedHours+":"+workedMinutes);
-            workDays.clear();
+            List<WorkDays> workDays = where.and(where.eq("day_of_month", date),where.eq("month", monthNumber), where.eq("year", year)).query();
+            if (workDays.size()>0) {
+                int workedHours = workDays.get(0).getWorked_hours();
+                int workedMinutes = workDays.get(0).getWorked_minutes();
+                String sWorkedHours = Integer.toString(workedHours);
+                String sWorkedMinutes = Integer.toString(workedMinutes);
+
+                if (sWorkedHours.length() == 1){sWorkedHours = "0"+sWorkedHours;}
+                if (sWorkedMinutes.length() == 1){sWorkedMinutes = "0"+sWorkedMinutes;}
+
+                e.getInfoHoursWorked().setText(sWorkedHours + ":" + sWorkedMinutes);
+                workDays.clear();
+            }else {
+                e.getInfoHoursWorked().setText("00:00");
+                Toast.makeText(context,"Inget arbetspass för detta datum!", Toast.LENGTH_SHORT).show();
+            }
 
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-
-//================================================================================================================================
-
-
-        Toast.makeText(context,Integer.toString(position),Toast.LENGTH_SHORT).show();
     }
 
 

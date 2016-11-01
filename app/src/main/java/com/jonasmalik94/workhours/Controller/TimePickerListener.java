@@ -22,13 +22,19 @@ public class TimePickerListener implements TimePickerDialog.OnTimeSetListener {
 
     @Override
     public void onTimeSet(TimePicker timePicker, int hours, int minutes) {
+        String sHours = Integer.toString(hours);
+        String sMinutes = Integer.toString(minutes);
+
+        if (sHours.length() == 1) sHours = "0"+sHours;
+        if (sMinutes.length() == 1) sMinutes = "0"+sMinutes;
+
         if (e.getStart().getId() == id){
-            e.getStart().setText(hours+":"+minutes);
-            f.setStart_time(hours+":"+minutes);
+            e.getStart().setText(sHours+":"+sMinutes);
+            f.setStart_time(sHours+":"+sMinutes);
         }
         else {
-            e.getEnd().setText(hours+":"+minutes);
-            f.setEnd_time(hours+":"+minutes);
+            e.getEnd().setText(sHours+":"+sMinutes);
+            f.setEnd_time(sHours+":"+sMinutes);
         }
     }
 }
