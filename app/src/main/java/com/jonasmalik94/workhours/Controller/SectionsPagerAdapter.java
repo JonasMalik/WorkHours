@@ -27,10 +27,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position) {
 
-            case 2: return NewDayFragment.newInstance();
-            case 0: return CalendarFragment.newInstance();
+            case 0: return NewDayFragment.newInstance();
+            case 1: return CalendarFragment.newInstance();
             case 3: return CalculatorFragment.newInstance();
-            case 1: return ListFragment.newInstance();
+            case 2: return ListFragment.newInstance();
             default: return NewDayFragment.newInstance();
         }
     }

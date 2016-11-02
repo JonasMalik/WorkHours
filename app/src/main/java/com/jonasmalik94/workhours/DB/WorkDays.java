@@ -18,6 +18,9 @@ public class WorkDays {
     private int month;
 
     @DatabaseField
+    private String monthName;
+
+    @DatabaseField
     private int day_of_month;
 
     @DatabaseField
@@ -36,9 +39,10 @@ public class WorkDays {
 
     }
 
-    public WorkDays(int year, int month, int day_of_month, int worked_hours, int worked_minutes, int lunch_hours, int lunch_minutes) {
+    public WorkDays(int year, int month, String monthName, int day_of_month, int worked_hours, int worked_minutes, int lunch_hours, int lunch_minutes) {
         this.year = year;
         this.month = month;
+        this.monthName = monthName;
         this.day_of_month = day_of_month;
         this.worked_hours = worked_hours;
         this.worked_minutes = worked_minutes;
@@ -52,6 +56,7 @@ public class WorkDays {
                 "id=" + id +
                 ", year=" + year +
                 ", month=" + month +
+                ", monthName='" + monthName + '\'' +
                 ", day_of_month=" + day_of_month +
                 ", worked_hours=" + worked_hours +
                 ", worked_minutes=" + worked_minutes +
@@ -83,5 +88,8 @@ public class WorkDays {
     }
     public int getWorked_minutes() {
         return worked_minutes;
+    }
+    public String getMonthName() {
+        return monthName;
     }
 }

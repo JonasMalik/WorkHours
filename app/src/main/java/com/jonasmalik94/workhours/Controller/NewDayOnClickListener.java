@@ -19,6 +19,7 @@ import com.jonasmalik94.workhours.Elements.CalendarElements;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.Model.Dialogs;
+import com.jonasmalik94.workhours.Model.ListEngine;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -38,6 +39,7 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
     Context context;
     CalendarElements cE= CalendarElements.getInstance();
     CalendarEngine engine = new CalendarEngine();
+    ListEngine listEngine = new ListEngine();
     NewDayElements e = NewDayElements.getInstance();
     FieldHolder f = FieldHolder.getInstance();
 
@@ -77,6 +79,7 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
                 //Create
                 workDaysDao.create(new WorkDays(f.getYear(),
                                                 f.getMonth(),
+                                                engine.getMonthName(f.getMonth()),
                                                 f.getDay_of_month(),
                                                 f.getWorked_hours(),
                                                 f.getWorked_minutes(),
@@ -89,7 +92,7 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
 
                 engine.refreshCalendarItems(context,engine.getMonthNumber(),engine.getYear());
                 engine.refreshCalendarTotal(context,engine.getMonthNumber(),engine.getYear());
-
+                listEngine.refreshListView(context);
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ParseException e1) {
