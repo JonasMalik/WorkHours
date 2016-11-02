@@ -40,7 +40,8 @@
     <string name="toast_delete_success">Arbetspass raderat</string>
     <string name="toast_delete_nothing_to_delete">Ingen logg för detta datum</string>
 
-
-
+    <!-- Calendar -->
+    <string name="hours_total">Antal arbetstimmar:</string>
+    <string name="days_total">Antal arbetspass:</string>
 
 </resources>

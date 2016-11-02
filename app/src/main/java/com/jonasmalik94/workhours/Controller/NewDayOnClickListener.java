@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.table.TableUtils;
 import com.jonasmalik94.workhours.DB.DatabaseHelper;
@@ -72,31 +73,29 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             try {
                 DatabaseHelper helper = new DatabaseHelper(context);
                 workDaysDao = helper.getWorkDaysRuntimeDao();
+
+                //Create
+                workDaysDao.create(new WorkDays(f.getYear(),
+                                                f.getMonth(),
+                                                f.getDay_of_month(),
+                                                f.getWorked_hours(),
+                                                f.getWorked_minutes(),
+                                                f.getLunch_hours(),
+                                                f.getLunch_minutes()));
+
+                //Add to db
+                List<WorkDays> workDays = workDaysDao.queryForAll();
+                helper.close();
+
+                engine.refreshCalendarItems(context,engine.getMonthNumber(),engine.getYear());
+                engine.refreshCalendarTotal(context,engine.getMonthNumber(),engine.getYear());
+
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }
-
-            //Create
-            try {
-                workDaysDao.create(new WorkDays(f.getYear(),
-                        f.getMonth(),
-                        f.getDay_of_month(),
-                        f.getWorked_hours(),
-                        f.getWorked_minutes(),
-                        f.getLunch_hours(),
-                        f.getLunch_minutes()));
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }
 
-            //Add to db
-            List<WorkDays> workDays = workDaysDao.queryForAll();
-
-            cE.getCalendar().setAdapter(new CalendarAdapter(context,
-                                                            engine.getItems(engine.getYear(),
-                                                                            engine.getMonthNumber()),
-                                                            engine.getMonthNumber(),
-                                                            engine.getYear()));
 
 
         }

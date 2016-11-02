@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@android:drawable/dialog_holo_dark_frame"
+    android:paddingBottom="4dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+
+    <TextView
+        android:id="@+id/list_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center"
+        android:text="Date"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:background="@color/darkGreen"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:id="@+id/list_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="ID: 1"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/list_header"/>
+
+    <TextView
+        android:id="@+id/list_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="Datum: 2016"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/list_id"/>
+
+    <TextView
+        android:id="@+id/list_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="- 11"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_toRightOf="@+id/list_year"
+        android:layout_below="@+id/list_id" />
+
+    <TextView
+        android:id="@+id/list_day_of_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="- 22"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_toRightOf="@+id/list_month"
+        android:layout_below="@+id/list_id" />
+
+    <TextView
+        android:id="@+id/list_worked_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="Arbetad tid: 2h"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/list_day_of_month"/>
+
+    <TextView
+        android:id="@+id/list_worked_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="22m"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/list_day_of_month"
+        android:layout_toRightOf="@+id/list_worked_hours"/>
+
+    <TextView
+        android:id="@+id/list_lunch_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="Rast: 1h"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/list_worked_minutes"/>
+
+    <TextView
+        android:id="@+id/list_lunch_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingEnd="10dp"
+        android:text="15m"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_alignParentStart="false"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/list_worked_minutes"
+        android:layout_toRightOf="@+id/list_lunch_hours"/>
+
+
+</RelativeLayout>
+

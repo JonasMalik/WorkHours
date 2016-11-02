@@ -24,8 +24,11 @@ public class CalendarElements {
     private TextView month;
     private TextView infoHeader;
     private TextView infoHoursWorked;
+    private TextView daysTotal;
+    private TextView hoursTotal;
     private Button left;
     private Button right;
+    private Button cell;
 
     public GridView getCalendar() {
         return calendar;
@@ -62,5 +65,23 @@ public class CalendarElements {
     }
     public void setInfoHoursWorked(TextView infoHoursWorked) {
         this.infoHoursWorked = infoHoursWorked;
+    }
+    public TextView getDaysTotal() {
+        return daysTotal;
+    }
+    public void setDaysTotal(TextView daysTotal) {
+        this.daysTotal = daysTotal;
+    }
+    public TextView getHoursTotal() {
+        return hoursTotal;
+    }
+    public void setHoursTotal(TextView hoursTotal) {
+        this.hoursTotal = hoursTotal;
+    }
+    public Button getCell() {
+        return cell;
+    }
+    public void setCell(Button cell) {
+        this.cell = cell;
     }
 }

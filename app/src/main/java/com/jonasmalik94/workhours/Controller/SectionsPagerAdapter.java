@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jonasmalik94.workhours.View.CalculatorFragment;
 import com.jonasmalik94.workhours.View.CalendarFragment;
+import com.jonasmalik94.workhours.View.ListFragment;
 import com.jonasmalik94.workhours.View.NewDayFragment;
 
 /**
@@ -26,31 +27,23 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch(position) {
 
-            case 1: return NewDayFragment.newInstance(0);
-            case 0: return CalendarFragment.newInstance(1);
-            case 2: return CalculatorFragment.newInstance(2);
-            default: return NewDayFragment.newInstance(0);
+            case 2: return NewDayFragment.newInstance();
+            case 0: return CalendarFragment.newInstance();
+            case 3: return CalculatorFragment.newInstance();
+            case 1: return ListFragment.newInstance();
+            default: return NewDayFragment.newInstance();
         }
     }
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 3;
+        // Show 4 total pages.
+        return 4;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "lägg till arbetsdag";
-            case 1:
-                return "ads";
-            case 2:
-                return "SECTION 3";
-            case 3:
-                return "SECTION 4";
-        }
+
         return null;
     }
 }

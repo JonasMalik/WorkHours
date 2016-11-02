@@ -14,27 +14,13 @@ import com.jonasmalik94.workhours.Controller.CalculatorOnClickListener;
 import com.jonasmalik94.workhours.R;
 import com.jonasmalik94.workhours.Elements.CalculatorElements;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class CalculatorFragment extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public CalculatorFragment() {
-    }
+    public CalculatorFragment() {}
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
-    public static CalculatorFragment newInstance(int sectionNumber) {
+    public static CalculatorFragment newInstance() {
         CalculatorFragment fragment = new CalculatorFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }

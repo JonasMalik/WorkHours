@@ -12,9 +12,10 @@ import com.jonasmalik94.workhours.R;
  */
 
 public class SpinnerListener extends Activity implements AdapterView.OnItemSelectedListener {
+    // Spinner text color
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        ((TextView) adapterView.getChildAt(0)).setTextColor(view.getResources().getColor(R.color.text_gray));
+       // ((TextView) adapterView.getChildAt(0)).setTextColor(view.getResources().getColor(R.color.text_gray));
 
     }
 

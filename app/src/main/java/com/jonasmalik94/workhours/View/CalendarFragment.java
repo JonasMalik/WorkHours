@@ -1,50 +1,30 @@
 package com.jonasmalik94.workhours.View;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.jonasmalik94.workhours.Controller.CalendarAdapter;
 import com.jonasmalik94.workhours.Controller.CalendarOnClickListener;
 import com.jonasmalik94.workhours.Controller.CalendarOnItemClickListener;
 import com.jonasmalik94.workhours.Elements.CalendarElements;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.R;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 /**
  * A placeholder fragment containing a simple view.
  */
 public class CalendarFragment extends Fragment {
-    /**
-     * The fragment argument representing the section number for this
-     * fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public CalendarFragment() {
-    }
+    public CalendarFragment() {}
 
-    /**
-     * Returns a new instance of this fragment for the given section
-     * number.
-     */
-    public static CalendarFragment newInstance(int sectionNumber) {
+    public static CalendarFragment newInstance() {
         CalendarFragment fragment = new CalendarFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,17 +38,16 @@ public class CalendarFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_calender, container, false);
         CalendarOnItemClickListener itemListener = new CalendarOnItemClickListener(getContext());
 
-        TextView month = (TextView) rootView.findViewById(R.id.month);
-        final GridView calendar = (GridView) rootView.findViewById(R.id.calender);
-        Button left = (Button) rootView.findViewById(R.id.left);
-        Button right = (Button) rootView.findViewById(R.id.right);
-        TextView infoHeader = (TextView) rootView.findViewById(R.id.info_header);
+        final GridView calendar  = (GridView) rootView.findViewById(R.id.calender);
+        Button left              = (Button)   rootView.findViewById(R.id.left);
+        Button right             = (Button)   rootView.findViewById(R.id.right);
+        Button cell              = (Button)   rootView.findViewById(R.id.grid_item);
+        TextView infoHeader      = (TextView) rootView.findViewById(R.id.info_header);
         TextView infoHoursWorked = (TextView) rootView.findViewById(R.id.info_hours_worked);
+        TextView daysTotal       = (TextView) rootView.findViewById(R.id.days_total);
+        TextView hoursTotal      = (TextView) rootView.findViewById(R.id.hours_total);
+        TextView month           = (TextView) rootView.findViewById(R.id.month);
 
-        calendar.setAdapter(new CalendarAdapter(getContext(),
-                            engine.getItems(engine.getYear(), engine.getMonthNumber()),
-                            engine.getMonthNumber(),
-                            engine.getYear()));
         left.setOnClickListener(clickListener);
         right.setOnClickListener(clickListener);
         month.setText(engine.getMonthName(engine.getMonthNumber())+" "+engine.getYear());
@@ -81,7 +60,12 @@ public class CalendarFragment extends Fragment {
         e.setMonth(month);
         e.setLeft(left);
         e.setRight(right);
+        e.setHoursTotal(hoursTotal);
+        e.setDaysTotal(daysTotal);
+        e.setCell(cell);
 
+        engine.refreshCalendarItems(getContext(),engine.getMonthNumber(),engine.getYear());
+        engine.refreshCalendarTotal(getContext(),engine.getMonthNumber(),engine.getYear());
 
         return rootView;
     }

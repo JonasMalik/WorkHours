@@ -10,10 +10,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.Where;
 import com.jonasmalik94.workhours.DB.DatabaseHelper;
 import com.jonasmalik94.workhours.DB.WorkDays;
+import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.R;
 
 import java.sql.SQLException;
@@ -29,8 +31,10 @@ public class CalendarAdapter extends BaseAdapter {
     private Context context;
     private int month;
     private int year;
+    private int date;
     private ArrayList<String> items;
     LayoutInflater inflater;
+    CalendarEngine engine = new CalendarEngine();
 
     public CalendarAdapter(Context context, ArrayList<String> items, int month, int year) {
         this.context = context;
@@ -41,13 +45,13 @@ public class CalendarAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
+        date = position +1;
 
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.cell, null);
-        }
+        if (convertView == null) {convertView = inflater.inflate(R.layout.cell, null);}
+
         Button cell = (Button) convertView.findViewById(R.id.grid_item);
         cell.setText(items.get(position));
-        checkIfExist(cell,position, month, year);
+        engine.printCell(context, cell, date, month, year);
 
         return convertView;
     }
@@ -67,20 +71,5 @@ public class CalendarAdapter extends BaseAdapter {
         return position;
     }
 
-    public void checkIfExist(Button cell, int position, int month, int year){
-        RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
-        try {
-            DatabaseHelper helper = new DatabaseHelper(context);
-            workDaysDao = helper.getWorkDaysRuntimeDao();
-            Where where = workDaysDao.queryBuilder().where();
-            List<WorkDays> workDays = where.and(where.eq("day_of_month", position+1), where.eq("month", month), where.eq("year", year)).query();
 
-            if (workDays.size() > 0){
-                cell.setBackgroundColor(cell.getResources().getColor(R.color.light_red));
-                workDays.clear();
-            }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-    }
 }
