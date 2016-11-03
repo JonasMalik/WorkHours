@@ -60,7 +60,7 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
         Button submitButton = e.getSubmitButton();
 
         if (view.getId() == date.getId()) {
-            openDatePickerDialog(context);
+            openDatePickerDialog(context,date.getId());
         } else if (view.getId() == start.getId()) {
             openTimePickerDialog(context, start.getId());
         } else if (view.getId() == end.getId()) {

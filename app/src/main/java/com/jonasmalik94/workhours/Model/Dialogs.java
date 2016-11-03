@@ -19,9 +19,9 @@ import com.jonasmalik94.workhours.Controller.TimePickerListener;
 public class Dialogs{
 
     Calendar c = Calendar.getInstance();
-    DatePickerListener datePickerListener = new DatePickerListener();
 
-    public void openDatePickerDialog(Context context) {
+    public void openDatePickerDialog(Context context, int id) {
+        DatePickerListener datePickerListener = new DatePickerListener(id);
         new DatePickerDialog(context,datePickerListener,c.get(c.YEAR),c.get(c.MONTH),c.get(c.DAY_OF_MONTH)).show();
     }
 

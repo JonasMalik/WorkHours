@@ -8,6 +8,7 @@
     <string name="lunch_work">Ange antal timmar lunchH/rast</string>
     <string name="date_work">Ange datum</string>
     <string name="save">Spara</string>
+    <string name="update">Updatera</string>
 
     <!-- New Day fragment -->
     <string name="zero">0</string>

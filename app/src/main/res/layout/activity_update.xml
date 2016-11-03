@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGray">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lägg till arbetsdag"
+        android:textColor="@color/caldroid_darker_gray"
+        android:textSize="40sp"
+        android:id="@+id/header"
+        android:textAlignment="center"
+        android:visibility="invisible"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/dark_red"
+        android:layout_below="@id/header"
+        android:id="@+id/line"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone"/>
+
+    <TextView android:id="@+id/update_date"
+        android:gravity="bottom|center"
+        android:layout_width="match_parent"
+        android:textSize="25sp"
+        android:background="@drawable/text_field_green"
+        android:text="Välj datum"
+        android:textColor="@color/text_gray"
+        android:layout_below="@+id/date_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:text="Arbetade TIMMAR OCH MIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:id="@+id/work_label"
+        android:layout_below="@id/update_date"
+        android:textColor="@color/caldroid_white"
+        android:layout_marginStart="20dp" />
+
+
+    <GridLayout android:id="@+id/worked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="2"
+        android:background="@drawable/text_field_green"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/work_label"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="20dp">
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:gravity="center"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/update_worked_h"
+            android:popupBackground="@android:drawable/dialog_holo_dark_frame" />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:id="@+id/update_worked_m"
+            android:popupBackground="@android:drawable/dialog_holo_dark_frame"
+            android:soundEffectsEnabled="true"
+            android:layerType="none" />
+    </GridLayout>
+
+    <TextView
+        android:text="@string/lunch_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:id="@+id/lunch_label"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/caldroid_white"
+        android:layout_below="@+id/worked"
+        android:layout_alignStart="@+id/end_label" />
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:columnCount="2"
+        android:background="@drawable/text_field_green"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/lunch_label"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:gravity="center"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/update_lunch_h"
+            android:popupBackground="@android:drawable/dialog_holo_dark_frame" />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:id="@+id/update_lunch_m"
+            android:popupBackground="@android:drawable/dialog_holo_dark_frame"
+            android:soundEffectsEnabled="true"
+            android:layerType="none" />
+    </GridLayout>
+
+
+    <Button
+        android:text="@string/update"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/update_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:background="@color/darkGreen"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/date_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/date_label"
+        android:textColor="@color/caldroid_white"
+        android:layout_below="@+id/header"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

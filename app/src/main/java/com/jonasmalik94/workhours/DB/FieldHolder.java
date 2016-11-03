@@ -30,6 +30,8 @@ public class FieldHolder {
     private int day_of_month;
     private int worked_hours;
     private int worked_minutes;
+    private int converted_worked_hours;
+    private int converted_worked_minutes;
     private String start_time;
     private String end_time;
     private int lunch_hours;
@@ -128,4 +130,16 @@ public class FieldHolder {
         this.end_time = end_time;
     }
 
+    public int getConverted_worked_hours() {
+        return converted_worked_hours;
+    }
+    public void setConverted_worked_hours(int converted_worked_hours) {
+        this.converted_worked_hours = converted_worked_hours;
+    }
+    public int getConverted_worked_minutes() {
+        return converted_worked_minutes;
+    }
+    public void setConverted_worked_minutes(int converted_worked_minutes) {
+        this.converted_worked_minutes = converted_worked_minutes;
+    }
 }

@@ -21,6 +21,7 @@ import java.util.List;
 public class ListEngine {
     ListElements e = ListElements.getInstance();
 
+    //In progress
     public void refreshListView(Context context){
 
         MainListAdapter adapter;
@@ -47,7 +48,7 @@ public class ListEngine {
             }
 
             adapter = new MainListAdapter(context, arrayOfRows);
-            e.getListView().setAdapter(adapter);
+            //e.getListView().setAdapter(adapter);
 
 
             helper.close();

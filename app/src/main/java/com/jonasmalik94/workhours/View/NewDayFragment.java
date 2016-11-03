@@ -50,7 +50,7 @@ public class NewDayFragment extends Fragment {
         ArrayList<String> minutes = new ArrayList<String>();
         NewDayElements e = NewDayElements.getInstance();
         View rootView = inflater.inflate(R.layout.fragment_new_day, container, false);
-        NewDayOnClickListener listener= new  NewDayOnClickListener(rootView, getContext());
+        NewDayOnClickListener listener= new  NewDayOnClickListener(rootView, rootView.getContext());
         SpinnerListener spinnerListener = new SpinnerListener();
 
         TextView startLabel = (TextView) rootView.findViewById(R.id.start_label);
@@ -73,8 +73,8 @@ public class NewDayFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        // Spinner Drop down elements
 
+        // Spinner Drop down elements
         for (int i = 0; i<25; i++) {
             hours.add(i + " timmar");
         }
