@@ -11,6 +11,7 @@ import com.jonasmalik94.workhours.DB.DatabaseHelper;
 import com.jonasmalik94.workhours.DB.WorkDays;
 import com.jonasmalik94.workhours.Elements.CalendarElements;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
+import com.jonasmalik94.workhours.Model.ListEngine;
 import com.jonasmalik94.workhours.R;
 
 import java.sql.SQLException;
@@ -28,6 +29,7 @@ public class DialogListener implements DialogInterface.OnClickListener {
     int year;
     CalendarElements e = CalendarElements.getInstance();
     CalendarEngine engine = new CalendarEngine();
+    ListEngine listEngine = new ListEngine();
 
     public DialogListener(Context context,int date, int month, int year) {
         this.context = context;
@@ -39,5 +41,6 @@ public class DialogListener implements DialogInterface.OnClickListener {
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {
         engine.deleteCellInfo(context,date,month,year);
+        listEngine.refreshListView(context);
     }
 }

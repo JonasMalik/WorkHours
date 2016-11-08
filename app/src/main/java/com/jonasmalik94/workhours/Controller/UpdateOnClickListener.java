@@ -74,7 +74,8 @@ public class UpdateOnClickListener extends Activity implements View.OnClickListe
             }
 
             listEngine.refreshListView(view.getContext());
-            this.finish();
+            Activity myActivity = (Activity) view.getContext();
+            myActivity.finish();
         }
         else if (view.getId() == e.getUpdateDate().getId()){
             dialogs.openDatePickerDialog(view.getContext(), e.getUpdateDate().getId());
