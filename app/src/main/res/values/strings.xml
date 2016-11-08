@@ -10,7 +10,7 @@
     <string name="save">Spara</string>
     <string name="update">Updatera</string>
 
-    <!-- New Day fragment -->
+    <!-- Calculator -->
     <string name="zero">0</string>
     <string name="one">1</string>
     <string name="two">2</string>
@@ -40,6 +40,7 @@
     <string name="toast_delete_error">Fel vid radering!</string>
     <string name="toast_delete_success">Arbetspass raderat</string>
     <string name="toast_delete_nothing_to_delete">Ingen logg för detta datum</string>
+    <string name="toast_already_exists">Logg existerar redan</string>
 
     <!-- Calendar -->
     <string name="hours_total">Antal arbetstimmar:</string>

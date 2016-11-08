@@ -11,16 +11,16 @@ public class WorkDays {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField
+    @DatabaseField(uniqueCombo = true)
     private int year;
 
-    @DatabaseField
+    @DatabaseField(uniqueCombo = true)
     private int month;
 
     @DatabaseField
     private String monthName;
 
-    @DatabaseField
+    @DatabaseField(uniqueCombo = true)
     private int day_of_month;
 
     @DatabaseField

@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExportActivity"></activity>
-        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".View.ExportActivity"></activity>
+        <activity android:name=".View.UpdateActivity"></activity>
     </application>
     <uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

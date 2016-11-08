@@ -48,7 +48,7 @@ public class ListEngine {
             }
 
             adapter = new MainListAdapter(context, arrayOfRows);
-            //e.getListView().setAdapter(adapter);
+            e.getListView().setAdapter(adapter);
 
 
             helper.close();

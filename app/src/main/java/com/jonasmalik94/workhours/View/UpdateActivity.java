@@ -1,7 +1,8 @@
-package com.jonasmalik94.workhours;
+package com.jonasmalik94.workhours.View;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -11,6 +12,7 @@ import com.jonasmalik94.workhours.Controller.UpdateOnClickListener;
 import com.jonasmalik94.workhours.DB.FieldHolder;
 import com.jonasmalik94.workhours.Elements.ListElements;
 import com.jonasmalik94.workhours.Model.ListEngine;
+import com.jonasmalik94.workhours.R;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,7 @@ public class UpdateActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
@@ -79,6 +82,9 @@ public class UpdateActivity extends Activity {
         updateLunchH.setSelection(lunchH);
         updateLunchM.setSelection(lunchM);
         f.setId(id);
+        f.setYear(year);
+        f.setMonth(month);
+        f.setDay_of_month(date);
 
         e.setUpdateWorkedH(updateWorkedH);
         e.setUpdateWorkedM(updateWorkedM);
@@ -86,5 +92,6 @@ public class UpdateActivity extends Activity {
         e.setUpdateLunchH(updateLunchH);
         e.setUpdateLunchM(updateLunchM);
         e.setUpdateButton(updateButton);
+
     }
 }

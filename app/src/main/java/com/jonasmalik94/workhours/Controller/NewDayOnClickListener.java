@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -20,6 +21,7 @@ import com.jonasmalik94.workhours.Elements.NewDayElements;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.Model.Dialogs;
 import com.jonasmalik94.workhours.Model.ListEngine;
+import com.jonasmalik94.workhours.R;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -71,36 +73,38 @@ public class NewDayOnClickListener extends Dialogs implements View.OnClickListen
             f.setLunch_hours(Integer.parseInt(lunchH.getSelectedItem().toString().replaceAll("\\D+", "")));
             f.setLunch_minutes(Integer.parseInt(lunchM.getSelectedItem().toString().replaceAll("\\D+", "")));
 
-            RuntimeExceptionDao<WorkDays, Integer> workDaysDao = null;
-            try {
-                DatabaseHelper helper = new DatabaseHelper(context);
-                workDaysDao = helper.getWorkDaysRuntimeDao();
+            boolean exists = engine.checkIfPostExist(context,f.getDay_of_month(),f.getMonth(),f.getYear());
+            if (exists) {
+                Toast.makeText(context, R.string.toast_already_exists, Toast.LENGTH_SHORT).show();
+            }else {
+                RuntimeExceptionDao<WorkDays, Integer> workDaysDao = null;
+                try {
+                    DatabaseHelper helper = new DatabaseHelper(context);
+                    workDaysDao = helper.getWorkDaysRuntimeDao();
 
-                //Create
-                workDaysDao.create(new WorkDays(f.getYear(),
-                                                f.getMonth(),
-                                                engine.getMonthName(f.getMonth()),
-                                                f.getDay_of_month(),
-                                                f.getWorked_hours(),
-                                                f.getWorked_minutes(),
-                                                f.getLunch_hours(),
-                                                f.getLunch_minutes()));
+                    //Create
+                    workDaysDao.create(new WorkDays(f.getYear(),
+                            f.getMonth(),
+                            engine.getMonthName(f.getMonth()),
+                            f.getDay_of_month(),
+                            f.getWorked_hours(),
+                            f.getWorked_minutes(),
+                            f.getLunch_hours(),
+                            f.getLunch_minutes()));
 
-                //Add to db
-                List<WorkDays> workDays = workDaysDao.queryForAll();
-                helper.close();
+                    //Add to db
+                    List<WorkDays> workDays = workDaysDao.queryForAll();
+                    helper.close();
 
-                engine.refreshCalendarItems(context,engine.getMonthNumber(),engine.getYear());
-                engine.refreshCalendarTotal(context,engine.getMonthNumber(),engine.getYear());
-                listEngine.refreshListView(context);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            } catch (ParseException e1) {
-                e1.printStackTrace();
+                    engine.refreshCalendarItems(context, engine.getMonthNumber(), engine.getYear());
+                    engine.refreshCalendarTotal(context, engine.getMonthNumber(), engine.getYear());
+                    listEngine.refreshListView(context);
+                } catch (SQLException e1) {
+
+                } catch (ParseException e1) {
+                    e1.printStackTrace();
+                }
             }
-
-
-
         }
     }
 }

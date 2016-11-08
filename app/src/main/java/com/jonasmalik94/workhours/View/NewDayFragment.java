@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -17,8 +16,6 @@ import android.widget.TextView;
 import com.jonasmalik94.workhours.Controller.NewDayOnClickListener;
 import com.jonasmalik94.workhours.Controller.SpinnerListener;
 import com.jonasmalik94.workhours.Elements.NewDayElements;
-import com.jonasmalik94.workhours.ExportActivity;
-import com.jonasmalik94.workhours.MainActivity;
 import com.jonasmalik94.workhours.R;
 
 import java.util.ArrayList;

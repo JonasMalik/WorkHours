@@ -11,9 +11,12 @@ import com.jonasmalik94.workhours.DB.DatabaseHelper;
 import com.jonasmalik94.workhours.DB.FieldHolder;
 import com.jonasmalik94.workhours.DB.WorkDays;
 import com.jonasmalik94.workhours.Elements.ListElements;
+import com.jonasmalik94.workhours.MainActivity;
 import com.jonasmalik94.workhours.Model.CalendarEngine;
 import com.jonasmalik94.workhours.Model.Dialogs;
 import com.jonasmalik94.workhours.Model.ListEngine;
+import com.jonasmalik94.workhours.View.ListFragment;
+import com.jonasmalik94.workhours.View.UpdateActivity;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -24,9 +27,10 @@ import java.util.List;
  * Created by jonas on 2016-10-11.
  */
 
-public class UpdateOnClickListener extends Dialogs implements View.OnClickListener {
+public class UpdateOnClickListener extends Activity implements View.OnClickListener {
 
     ListEngine listEngine = new ListEngine();
+    Dialogs dialogs = new Dialogs();
     CalendarEngine engine = new CalendarEngine();
     ListElements e = ListElements.getInstance();
     FieldHolder f = FieldHolder.getInstance();
@@ -69,9 +73,11 @@ public class UpdateOnClickListener extends Dialogs implements View.OnClickListen
                 e1.printStackTrace();
             }
 
+            listEngine.refreshListView(view.getContext());
+            this.finish();
         }
         else if (view.getId() == e.getUpdateDate().getId()){
-            openDatePickerDialog(view.getContext(), e.getUpdateDate().getId());
+            dialogs.openDatePickerDialog(view.getContext(), e.getUpdateDate().getId());
         }
 
     }

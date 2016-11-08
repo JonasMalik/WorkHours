@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
+/*
         RuntimeExceptionDao<WorkDays,Integer> workDaysDao = null;
         try {
             DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-
+*/
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mSectionsPagerAdapter);
     }
 

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.jonasmalik94.workhours.Elements.ListElements;
 import com.jonasmalik94.workhours.R;
-import com.jonasmalik94.workhours.UpdateActivity;
+import com.jonasmalik94.workhours.View.UpdateActivity;
 
 /**
  * Created by jonas on 2016-11-02.
@@ -43,7 +43,13 @@ public class ListOnItemListener implements AdapterView.OnItemLongClickListener {
         intent.putExtra("workedM", Integer.parseInt(workedM.getText().toString().replaceAll("\\D+","")));
         intent.putExtra("lunchH", Integer.parseInt(lunchH.getText().toString().replaceAll("\\D+","")));
         intent.putExtra("lunchM", Integer.parseInt(lunchM.getText().toString().replaceAll("\\D+","")));
+
         activity.startActivity(intent);
 
-        return true;    }
+
+        //activity.startActivity(intent);
+    //    activity.overridePendingTransition( R.anim.right_to_left, R.anim.stable );
+
+        return true;
+    }
 }
